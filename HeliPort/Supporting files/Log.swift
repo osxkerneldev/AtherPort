@@ -1,6 +1,6 @@
 //
 //  Log.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Igor Kulman on 22/06/2020.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.
@@ -19,26 +19,26 @@ import os.log
 final class Log {
     static func debug(_ message: String) {
         if #available(OSX 11.0, *) {
-            Logger.heliPort.info("DEBUG: \(message, privacy: .public)")
+            Logger.AtherPort.info("DEBUG: \(message, privacy: .public)")
         } else {
-            os_log("%{public}@", log: .heliPort, type: .info, "DEBUG: " + message)
+            os_log("%{public}@", log: .AtherPort, type: .info, "DEBUG: " + message)
         }
     }
 
     static func error(_ message: String) {
         if #available(OSX 11.0, *) {
-            Logger.heliPort.error("ERROR: \(message, privacy: .public)")
+            Logger.AtherPort.error("ERROR: \(message, privacy: .public)")
         } else {
-            os_log("%{public}@", log: .heliPort, type: .error, "ERROR: " + message)
+            os_log("%{public}@", log: .AtherPort, type: .error, "ERROR: " + message)
         }
     }
 }
 
 @available(OSX 11.0, *)
 extension Logger {
-    static let heliPort = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "HeliPort")
+    static let AtherPort = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "AtherPort")
 }
 
 extension OSLog {
-    static let heliPort = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "HeliPort")
+    static let AtherPort = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "AtherPort")
 }

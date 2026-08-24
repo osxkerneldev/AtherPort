@@ -1,6 +1,6 @@
 //
 //  NSApp+Extensions.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Bat.bat on 29/7/2024.
 //  Copyright © 2024 OpenIntelWireless. All rights reserved.

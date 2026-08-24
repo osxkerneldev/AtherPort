@@ -1,6 +1,6 @@
 //
 //  CommandLine.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Erik Bautista on 7/26/20.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.

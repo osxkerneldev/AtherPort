@@ -1,6 +1,6 @@
 //
 //  CriticalAlert.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Igor Kulman on 22/07/2020.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  BugReporter.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Erik Bautista on 7/26/20.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.
@@ -35,9 +35,9 @@ class BugReporter {
         return openPanel
     }()
 
-    private class func generateHeliPortLog() -> String {
+    private class func generateAtherPortLog() -> String {
 
-        // MARK: HeliPort log
+        // MARK: AtherPort log
 
         let appIdentifier = Bundle.main.bundleIdentifier!
 
@@ -58,7 +58,7 @@ class BugReporter {
                 return entryStr
             } catch {
                 Log.error("Could not generate bug report \(error)")
-                return .heliportCouldNotGetLogs
+                return .AtherPortCouldNotGetLogs
             }
         } else {
             let appLogCommand = ["show", "--predicate",
@@ -72,7 +72,7 @@ class BugReporter {
         }
     }
 
-    private class func generateItlwmLog() -> String {
+    private class func generateath9kLog() -> String {
         var response: String?
 
         if KextInfo("as.lvs1974.DebugEnhancer").kextDidLoad() {
@@ -80,7 +80,7 @@ class BugReporter {
             response = NSAppleScript(source:
                                      // swiftlint:disable line_length
                                      """
-                                     do shell script \"sudo dmesg | grep -E \\"itlwm|Airport|IO80211|EAPOL\\"\" with administrator privileges
+                                     do shell script \"sudo dmesg | grep -E \\"ath9k|Airport|IO80211|EAPOL\\"\" with administrator privileges
                                      """)!.executeAndReturnError(nil).stringValue
                                      // swiftlint:enable line_length
         } else {
@@ -94,15 +94,15 @@ class BugReporter {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "Unknown"
         let appBuildVer = Bundle.main.infoDictionary?["CFBundleVersion"] ?? "Unknown"
 
-        let appLog = generateHeliPortLog()
+        let appLog = generateAtherPortLog()
 
-        if appLog == .heliportCouldNotGetLogs || appLog == .scriptFailed {
+        if appLog == .AtherPortCouldNotGetLogs || appLog == .scriptFailed {
             DispatchQueue.main.async {
                 let alert = CriticalAlert(
                     message: NSLocalizedString("Error occurred while generating bug report."),
-                    informativeText: appLog == .heliportCouldNotGetLogs ?
-                    NSLocalizedString("Could not generate report for HeliPort.") :
-                    NSLocalizedString("Command failed to fetch logs for HeliPort."),
+                    informativeText: appLog == .AtherPortCouldNotGetLogs ?
+                    NSLocalizedString("Could not generate report for AtherPort.") :
+                    NSLocalizedString("Command failed to fetch logs for AtherPort."),
                     options: [NSLocalizedString("Dismiss")],
                     errorText: appLog
                 )
@@ -111,29 +111,29 @@ class BugReporter {
             return
         }
 
-        // MARK: itlwm log
+        // MARK: ath9k log
 
         var drv_info = ioctl_driver_info()
         _ = ioctl_get(Int32(IOCTL_80211_DRIVER_INFO.rawValue), &drv_info, MemoryLayout<ioctl_driver_info>.size)
-        var itlwmVer = String(cCharArray: drv_info.driver_version)
-        var itlwmFwVer = String(cCharArray: drv_info.fw_version)
-        if itlwmVer.isEmpty { itlwmVer = "Unknown" }
-        if itlwmFwVer.isEmpty { itlwmFwVer = "Unknown" }
+        var ath9kVer = String(cCharArray: drv_info.driver_version)
+        var ath9kFwVer = String(cCharArray: drv_info.fw_version)
+        if ath9kVer.isEmpty { ath9kVer = "Unknown" }
+        if ath9kFwVer.isEmpty { ath9kFwVer = "Unknown" }
 
-        let itlwmLog = generateItlwmLog()
+        let ath9kLog = generateath9kLog()
 
-        if itlwmLog == .msgbufInsufficient || itlwmLog == .scriptFailed {
+        if ath9kLog == .msgbufInsufficient || ath9kLog == .scriptFailed {
             DispatchQueue.main.async {
                 let alert = CriticalAlert(
                     message: NSLocalizedString("Error occurred while generating bug report."),
-                    informativeText: itlwmLog == .msgbufInsufficient ?
+                    informativeText: ath9kLog == .msgbufInsufficient ?
                     NSLocalizedString("Make sure you have installed `DebugEnhancer.kext`" +
-                                      " before collecting logs for itlwm.") :
-                    NSLocalizedString("Could not read logs for `itlwm`." +
-                                      " Make sure you allow `HeliPort` to read logs when prompted."),
+                                      " before collecting logs for ath9k.") :
+                    NSLocalizedString("Could not read logs for `ath9k`." +
+                                      " Make sure you allow `AtherPort` to read logs when prompted."),
                     options: [NSLocalizedString("Dismiss"), NSLocalizedString("Open Documentation")],
                     helpAnchor: .dmesgHelpURL,
-                    errorText: itlwmLog
+                    errorText: ath9kLog
                 )
 
                 if alert.show() == .alertSecondButtonReturn {
@@ -143,18 +143,18 @@ class BugReporter {
             return
         }
 
-        // MARK: Get itlwm name if loaded (itlwm or itlwmx)
+        // MARK: Get ath9k name if loaded (ath9k or ath9kx)
 
         let kextstatCommand = ["-c", "kextstat"]
-        let itlwmLoaded = Commands.execute(executablePath: .shell, args: kextstatCommand)
-        var itlwmName: String?
-        if let regex = try? NSRegularExpression.init(pattern: "\\b(itlwm\\w*)\\b", options: []), itlwmLoaded.0 != nil {
-            let firstMatch = regex.firstMatch(in: itlwmLoaded.0!,
+        let ath9kLoaded = Commands.execute(executablePath: .shell, args: kextstatCommand)
+        var ath9kName: String?
+        if let regex = try? NSRegularExpression.init(pattern: "\\b(ath9k\\w*)\\b", options: []), ath9kLoaded.0 != nil {
+            let firstMatch = regex.firstMatch(in: ath9kLoaded.0!,
                                             options: [],
-                                            range: NSRange(location: 0, length: itlwmLoaded.0!.count))
+                                            range: NSRange(location: 0, length: ath9kLoaded.0!.count))
             if let range = firstMatch?.range(at: 1) {
-                if let swiftRange = Range(range, in: itlwmLoaded.0!) {
-                    itlwmName = String(itlwmLoaded.0![swiftRange])
+                if let swiftRange = Range(range, in: ath9kLoaded.0!) {
+                    ath9kName = String(ath9kLoaded.0![swiftRange])
                 }
             }
         }
@@ -170,15 +170,15 @@ class BugReporter {
                         \(appLog)
 
                         \(dateRan)
-                        HeliPort Version: \(appVersion) (Build \(appBuildVer))
+                        AtherPort Version: \(appVersion) (Build \(appBuildVer))
 
                         macOS \(osVersion)
                         """
-        let itlwmOutput = """
-                          \(itlwmLog)
+        let ath9kOutput = """
+                          \(ath9kLog)
 
                           \(dateRan)
-                          \(itlwmName != nil ?  "\(itlwmName!) loaded version: \(itlwmVer) (Firmware: \(itlwmFwVer))" :
+                          \(ath9kName != nil ?  "\(ath9kName!) loaded version: \(ath9kVer) (Firmware: \(ath9kFwVer))" :
                                 "Kext not loaded")
 
                           macOS \(osVersion)
@@ -214,10 +214,10 @@ class BugReporter {
                         try FileManager.default.createDirectory(at: reportDirUrl,
                                                                 withIntermediateDirectories: true,
                                                                 attributes: nil)
-                        let heliPortFile = reportDirUrl.appendingPathComponent("HeliPort_logs.log")
-                        let itlwmFile = reportDirUrl.appendingPathComponent("\(itlwmName ?? "itlwm")_logs.log")
-                        try appOutput.write(to: heliPortFile, atomically: true, encoding: .utf8)
-                        try itlwmOutput.write(to: itlwmFile, atomically: true, encoding: .utf8)
+                        let AtherPortFile = reportDirUrl.appendingPathComponent("AtherPort_logs.log")
+                        let ath9kFile = reportDirUrl.appendingPathComponent("\(ath9kName ?? "ath9k")_logs.log")
+                        try appOutput.write(to: AtherPortFile, atomically: true, encoding: .utf8)
+                        try ath9kOutput.write(to: ath9kFile, atomically: true, encoding: .utf8)
                     } catch {
                         Log.error("\(error)")
                         return
@@ -253,15 +253,15 @@ class BugReporter {
 
 private extension String {
 
-    // MARK: HeliPort Generation errors
+    // MARK: AtherPort Generation errors
 
-    static let heliportCouldNotGetLogs = "HELIPORT-OSLOGSTORE"
+    static let AtherPortCouldNotGetLogs = "AtherPort-OSLOGSTORE"
 
-    // MARK: ITLWM Generation errors
+    // MARK: ath9k Generation errors
 
     static let msgbufInsufficient = "MSGBUF-INSUFFICIENT"
     static let scriptFailed = "SCRIPT-FAILED"
 
     // MARK: DOC URL
-    static let dmesgHelpURL = "https://docs.oiw.workers.dev/itlwm/Troubleshooting.html#runtime-logs"
+    static let dmesgHelpURL = "https://docs.oiw.workers.dev/ath9k/Troubleshooting.html#runtime-logs"
 }

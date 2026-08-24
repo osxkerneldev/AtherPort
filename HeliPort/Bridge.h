@@ -1,6 +1,6 @@
 //
 //  Bridge.h
-//  HeliPort
+//  AtherPort
 //
 //  Created by Bat.bat on 8/7/2024.
 //  Copyright © 2024 OpenIntelWireless. All rights reserved.
@@ -16,5 +16,5 @@
 @end
 
 
-// MARK: itlwm API
+// MARK: ath9k API
 #include "../ClientKit/Api.h"

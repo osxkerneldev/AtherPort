@@ -1,6 +1,6 @@
 //
 //  NSMenuItem+Extensions.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Igor Kulman on 29/06/2020.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.

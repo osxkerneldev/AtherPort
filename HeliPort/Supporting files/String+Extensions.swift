@@ -1,6 +1,6 @@
 //
 //  String+NonNullTerminated.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Erik Bautista on 11/21/20.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.

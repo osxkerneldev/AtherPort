@@ -37,7 +37,7 @@
 		50E7700F2C5A7CE100DB1160 /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E7700E2C5A7CD600DB1160 /* UpdateManager.swift */; };
 		50F4959824BDD26D00AE4C08 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4959724BDD26D00AE4C08 /* LoginItemManager.swift */; };
 		50F495A024BDEB6500AE4C08 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4959F24BDEB6500AE4C08 /* main.swift */; };
-		50F495AC24BDEBB500AE4C08 /* HeliPort Launcher.app in Embed Launcher */ = {isa = PBXBuildFile; fileRef = 50F4959D24BDEB6500AE4C08 /* HeliPort Launcher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50F495AC24BDEBB500AE4C08 /* AtherPort Launcher.app in Embed Launcher */ = {isa = PBXBuildFile; fileRef = 50F4959D24BDEB6500AE4C08 /* AtherPort Launcher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7557CDF424935260000F0F71 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7557CDF324935260000F0F71 /* Credits.rtf */; };
 		7562BBE424826103008A9BD2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7562BBE324826102008A9BD2 /* README.md */; };
 		75FDF38B2481D22000B2A601 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FDF38A2481D22000B2A601 /* NetworkManager.swift */; };
@@ -64,7 +64,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				50F495AC24BDEBB500AE4C08 /* HeliPort Launcher.app in Embed Launcher */,
+				50F495AC24BDEBB500AE4C08 /* AtherPort Launcher.app in Embed Launcher */,
 			);
 			name = "Embed Launcher";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +100,7 @@
 		5088F70726BEA46F009E3A15 /* KextInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KextInfo.swift; sourceTree = "<group>"; };
 		50E7700E2C5A7CD600DB1160 /* UpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		50F4959724BDD26D00AE4C08 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
-		50F4959D24BDEB6500AE4C08 /* HeliPort Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HeliPort Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F4959D24BDEB6500AE4C08 /* AtherPort Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AtherPort Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F4959F24BDEB6500AE4C08 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50F495A624BDEB6700AE4C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50F495A724BDEB6700AE4C08 /* HeliPort_Launcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HeliPort_Launcher.entitlements; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		7562BBE324826102008A9BD2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		75FDF38A2481D22000B2A601 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BCCB2AA3243708090005BB82 /* WiFiMenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiMenuItemView.swift; sourceTree = "<group>"; wrapsLines = 0; };
-		BCFA32E72424D2BE00E23603 /* HeliPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeliPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCFA32E72424D2BE00E23603 /* AtherPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtherPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFA32EA2424D2BE00E23603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCFA32EC2424D2BF00E23603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCFA32EF2424D2BF00E23603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -233,8 +233,8 @@
 		BCFA32E82424D2BE00E23603 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BCFA32E72424D2BE00E23603 /* HeliPort.app */,
-				50F4959D24BDEB6500AE4C08 /* HeliPort Launcher.app */,
+				BCFA32E72424D2BE00E23603 /* AtherPort.app */,
+				50F4959D24BDEB6500AE4C08 /* AtherPort Launcher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,9 +293,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		50F4959C24BDEB6500AE4C08 /* HeliPort Launcher */ = {
+		50F4959C24BDEB6500AE4C08 /* AtherPort Launcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50F495A824BDEB6700AE4C08 /* Build configuration list for PBXNativeTarget "HeliPort Launcher" */;
+			buildConfigurationList = 50F495A824BDEB6700AE4C08 /* Build configuration list for PBXNativeTarget "AtherPort Launcher" */;
 			buildPhases = (
 				50F4959924BDEB6500AE4C08 /* Sources */,
 				50F4959A24BDEB6500AE4C08 /* Frameworks */,
@@ -305,14 +305,14 @@
 			);
 			dependencies = (
 			);
-			name = "HeliPort Launcher";
+			name = "AtherPort Launcher";
 			productName = "HeliPort Launcher";
-			productReference = 50F4959D24BDEB6500AE4C08 /* HeliPort Launcher.app */;
+			productReference = 50F4959D24BDEB6500AE4C08 /* AtherPort Launcher.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BCFA32E62424D2BE00E23603 /* HeliPort */ = {
+		BCFA32E62424D2BE00E23603 /* AtherPort */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BCFA32F52424D2BF00E23603 /* Build configuration list for PBXNativeTarget "HeliPort" */;
+			buildConfigurationList = BCFA32F52424D2BF00E23603 /* Build configuration list for PBXNativeTarget "AtherPort" */;
 			buildPhases = (
 				75E3976A2487FAF600E84DB8 /* Lint */,
 				BCFA32E32424D2BE00E23603 /* Sources */,
@@ -324,13 +324,13 @@
 			);
 			dependencies = (
 			);
-			name = HeliPort;
+			name = AtherPort;
 			packageProductDependencies = (
 				50C5F2CF27C23074009E3F68 /* KeychainAccess */,
 				50C5F2D227C230D6009E3F68 /* Sparkle */,
 			);
 			productName = HeliPort;
-			productReference = BCFA32E72424D2BE00E23603 /* HeliPort.app */;
+			productReference = BCFA32E72424D2BE00E23603 /* AtherPort.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -352,7 +352,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BCFA32E22424D2BE00E23603 /* Build configuration list for PBXProject "HeliPort" */;
+			buildConfigurationList = BCFA32E22424D2BE00E23603 /* Build configuration list for PBXProject "AtherPort" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -387,8 +387,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BCFA32E62424D2BE00E23603 /* HeliPort */,
-				50F4959C24BDEB6500AE4C08 /* HeliPort Launcher */,
+				BCFA32E62424D2BE00E23603 /* AtherPort */,
+				50F4959C24BDEB6500AE4C08 /* AtherPort Launcher */,
 			);
 		};
 /* End PBXProject section */
@@ -517,7 +517,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.OpenIntelWireless.HeliPort-Launcher";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dellbookpro.AtherPort-Launcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -535,7 +535,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.OpenIntelWireless.HeliPort-Launcher";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dellbookpro.AtherPort-Launcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -682,7 +682,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.OpenIntelWireless.HeliPort;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dellbookpro.AtherPort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = HeliPort/Bridge.h;
@@ -704,7 +704,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.OpenIntelWireless.HeliPort;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dellbookpro.AtherPort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = HeliPort/Bridge.h;
@@ -715,7 +715,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		50F495A824BDEB6700AE4C08 /* Build configuration list for PBXNativeTarget "HeliPort Launcher" */ = {
+		50F495A824BDEB6700AE4C08 /* Build configuration list for PBXNativeTarget "AtherPort Launcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50F495A924BDEB6700AE4C08 /* Debug */,
@@ -724,7 +724,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		BCFA32E22424D2BE00E23603 /* Build configuration list for PBXProject "HeliPort" */ = {
+		BCFA32E22424D2BE00E23603 /* Build configuration list for PBXProject "AtherPort" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCFA32F32424D2BF00E23603 /* Debug */,
@@ -733,7 +733,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		BCFA32F52424D2BF00E23603 /* Build configuration list for PBXNativeTarget "HeliPort" */ = {
+		BCFA32F52424D2BF00E23603 /* Build configuration list for PBXNativeTarget "AtherPort" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCFA32F62424D2BF00E23603 /* Debug */,

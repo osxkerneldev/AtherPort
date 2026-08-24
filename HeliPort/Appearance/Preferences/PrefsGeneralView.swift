@@ -1,6 +1,6 @@
 //
 //  PrefsGeneralView.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Erik Bautista on 8/3/20.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.
@@ -114,7 +114,7 @@ extension PrefsGeneralView {
         case .legacyUIId:
             if #available(macOS 11, *) {
                 UserDefaults.standard.set(sender.state == .on, forKey: .DefaultsKey.legacyUI)
-                let alert = CriticalAlert(message: .heliportRestart,
+                let alert = CriticalAlert(message: .AtherPortRestart,
                                           informativeText: .restartInfoText,
                                           options: [.restart, .later])
 
@@ -143,7 +143,7 @@ private extension String {
     static let appearance = NSLocalizedString("Appearance:")
     static let useLegacyUI = NSLocalizedString("Use Legacy UI")
 
-    static let heliportRestart = NSLocalizedString("HeliPort Restart Required")
+    static let AtherPortRestart = NSLocalizedString("AtherPort Restart Required")
     static let restartInfoText =
         NSLocalizedString("Switching appearance requires a restart of the application to take effect.")
     static let restart = NSLocalizedString("Restart")

@@ -1,6 +1,6 @@
 //
 //  KextInfo.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Bat.bat on 8/7/21.
 //  Copyright © 2021 OpenIntelWireless. All rights reserved.

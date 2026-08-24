@@ -1,6 +1,6 @@
 //
 //  PrefsSavedNetworksView.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Erik Bautista on 8/1/20.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.

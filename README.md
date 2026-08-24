@@ -1,22 +1,16 @@
-# HeliPort
+# AtherPort
 
-[![CI](https://github.com/OpenIntelWireless/HeliPort/actions/workflows/main.yml/badge.svg)](https://github.com/OpenIntelWireless/HeliPort/actions/workflows/main.yml)
-
-Intel WiFi Client for [itlwm](https://github.com/OpenIntelWireless/itlwm)
-
-## Chat
-
-If you have any questions or feedback, feel free to [![Join the chat at https://gitter.im/OpenIntelWireless/itlwm](https://badges.gitter.im/OpenIntelWireless/itlwm.svg)](https://gitter.im/OpenIntelWireless/itlwm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![CI](https://github.com/OpenIntelWireless/AtherPort/actions/workflows/main.yml/badge.svg)](https://github.com/OpenIntelWireless/AtherPort/actions/workflows/main.yml)
 
 ## Download
 
 ### Latest Stable Version
 
-[![Download from https://github.com/OpenIntelWireless/HeliPort/releases/latest](https://img.shields.io/github/v/release/OpenIntelWireless/HeliPort?color=%2300AABB&label=Download)](https://github.com/OpenIntelWireless/HeliPort/releases/latest)
+[![Download from https://github.com/OpenIntelWireless/AtherPort/releases/latest](https://img.shields.io/github/v/release/OpenIntelWireless/AtherPort?color=%2300AABB&label=Download)](https://github.com/OpenIntelWireless/AtherPort/releases/latest)
 
 ### Latest Alpha Version
 
-[![Download from https://github.com/OpenIntelWireless/HeliPort/releases](https://img.shields.io/github/v/release/OpenIntelWireless/HeliPort?include_prereleases&label=Download)](https://github.com/OpenIntelWireless/HeliPort/releases)
+[![Download from https://github.com/OpenIntelWireless/AtherPort/releases](https://img.shields.io/github/v/release/OpenIntelWireless/AtherPort?include_prereleases&label=Download)](https://github.com/OpenIntelWireless/AtherPort/releases)
 
 ## Status
 
@@ -24,7 +18,7 @@ The App is currently functional, we're still trying make it even better.
 
 ### To-Do's
 
-Visit [Projects](https://github.com/OpenIntelWireless/HeliPort/projects) for more information
+Visit [Projects](https://github.com/OpenIntelWireless/AtherPort/projects) for more information
 
 ## Issues
 
@@ -47,7 +41,7 @@ The following types of "Issues" will be considered as invalid and will be closed
 We desperately need contributors to help us improve this project, any help will be highly appreciated.
 
 - User interface and password management is implemented with `Swift 5`
-- Communication with [itlwm](https://github.com/OpenIntelWireless/itlwm) is implemented with `C`
+- Communication with [ath9k](#) is implemented with `C`
 
 ## Credits
 
@@ -58,7 +52,6 @@ We desperately need contributors to help us improve this project, any help will 
 - [@ErrorErrorError](https://github.com/ErrorErrorError) for UI improvement, Preference Window implementation and more
 - [@Goshin](https://github.com/Goshin) for API implementation, Status Menu improvements and more
 - [@igorkulman](https://github.com/igorkulman) for code refactoring, password management and more
-- [@zxystd](https://github.com/zxystd) for writing [itlwm](https://github.com/OpenIntelWireless/itlwm) and APIs
-- [Everyone](https://github.com/OpenIntelWireless/HeliPort/pulls?q=is%3Apr+label%3Adocumentation+is%3Aclosed) who contributed to localization files
+- [Everyone](https://github.com/OpenIntelWireless/AtherPort/pulls?q=is%3Apr+label%3Adocumentation+is%3Aclosed) who contributed to localization files
 - Legacy WiFi icons are from <https://icons8.com/>
 - Modern WiFi icons are from <https://github.com/framework7io/framework7-icons> (MIT License)

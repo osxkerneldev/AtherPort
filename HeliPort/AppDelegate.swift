@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by 梁怀宇 on 2020/3/20.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.
@@ -57,11 +57,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let version = String(cCharArray: drv_info.driver_version)
         let interface = String(cCharArray: drv_info.bsd_name)
         guard !version.isEmpty, !interface.isEmpty else {
-            Log.error("itlwm kext not loaded!")
+            Log.error("ath9k kext not loaded!")
 #if !DEBUG
-            let alert = CriticalAlert(message: NSLocalizedString("itlwm is not running"),
+            let alert = CriticalAlert(message: NSLocalizedString("ath9k is not running"),
                                       options: [NSLocalizedString("Dismiss"),
-                                                NSLocalizedString("Quit HeliPort")])
+                                                NSLocalizedString("Quit AtherPort")])
 
             if alert.show() == .alertSecondButtonReturn {
                 NSApp.terminate(nil)
@@ -71,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return false
         }
 
-        Log.debug("Loaded itlwm \(version) as \(interface)")
+        Log.debug("Loaded ath9k \(version) as \(interface)")
 
         return true
     }
@@ -95,8 +95,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         Log.error("Running path unexpected!")
 
-        let alert = CriticalAlert(message: NSLocalizedString("HeliPort running at an unexpected path"),
-                                  options: [NSLocalizedString("Quit HeliPort")])
+        let alert = CriticalAlert(message: NSLocalizedString("AtherPort running at an unexpected path"),
+                                  options: [NSLocalizedString("Quit AtherPort")])
         alert.show()
 
         NSApp.terminate(nil)
@@ -104,20 +104,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func checkAPI() {
 
-        // It's fine for users to bypass this check by launching HeliPort first then loading itlwm in terminal
+        // It's fine for users to bypass this check by launching AtherPort first then loading ath9k in terminal
         // Only advanced users do so, and they know what they are doing
         guard checkDriver(), IOCTL_VERSION != drv_info.version else {
             return
         }
 
-        Log.error("itlwm API mismatch!")
+        Log.error("ath9k API mismatch!")
 
 #if !DEBUG
-        let text = NSLocalizedString("HeliPort API Version: ") + String(IOCTL_VERSION) +
-                   "\n" + NSLocalizedString("itlwm API Version: ") + String(drv_info.version)
-        let alert = CriticalAlert(message: NSLocalizedString("itlwm Version Mismatch"),
+        let text = NSLocalizedString("AtherPort API Version: ") + String(IOCTL_VERSION) +
+                   "\n" + NSLocalizedString("ath9k API Version: ") + String(drv_info.version)
+        let alert = CriticalAlert(message: NSLocalizedString("ath9k Version Mismatch"),
                                   informativeText: text,
-                                  options: [NSLocalizedString("Quit HeliPort"),
+                                  options: [NSLocalizedString("Quit AtherPort"),
                                             NSLocalizedString("Visit OpenIntelWireless on GitHub")]
         )
 

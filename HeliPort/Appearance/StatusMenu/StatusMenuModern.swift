@@ -1,6 +1,6 @@
 //
 //  StatusMenuModern.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Bat.bat on 23/6/2024.
 //  Copyright © 2024 OpenIntelWireless. All rights reserved.
@@ -70,7 +70,7 @@ final class StatusMenuModern: StatusMenuBase, StatusMenuItems {
     lazy var hiddenItems: [NSMenuItem] = [
         bsdItem,
         macItem,
-        itlwmVerItem,
+        ath9kVerItem,
         enableLoggingItem,
         createReportItem,
         diagnoseItem,
@@ -140,7 +140,7 @@ final class StatusMenuModern: StatusMenuBase, StatusMenuItems {
     func setupMenu() {
         addItem(statusItem)
 
-        [bsdItem, macItem, itlwmVerItem].forEach {
+        [bsdItem, macItem, ath9kVerItem].forEach {
             $0.view = KeyValueMenuItemView(key: $0.title, inset: .standard)
             addItem($0)
         }

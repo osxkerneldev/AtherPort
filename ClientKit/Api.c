@@ -155,9 +155,7 @@ error:
 
 static bool isSupportService(const char *name)
 {
-    if (strcmp(name, "TestService")
-        && strcmp(name, "itlwmx") && strcmp(name, "itlwm")
-        ) {
+    if (strcmp(name, "TestService") && strcmp(name, "ath9k")) {
         return false;
     }
     return true;

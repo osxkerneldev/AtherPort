@@ -1,6 +1,6 @@
 //
 //  itl_80211_state+Extensions.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by Igor Kulman on 30/06/2020.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.

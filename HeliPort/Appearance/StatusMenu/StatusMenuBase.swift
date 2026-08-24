@@ -1,6 +1,6 @@
 //
 //  StatusMenuBase.swift
-//  HeliPort
+//  AtherPort
 //
 //  Created by 梁怀宇 on 2020/4/5.
 //  Copyright © 2020 OpenIntelWireless. All rights reserved.
@@ -45,7 +45,7 @@ class StatusMenuBase: NSMenu, NSMenuDelegate {
     private var driverState: itl_80211_state = ITL80211_S_INIT {
         didSet {
             /** Only allow if network card is enabled or if the network card does not load
-             either due to itlwm not loaded or just not able to receive info
+             either due to ath9k not loaded or just not able to receive info
              This prevents cards that are working but are "off" to not change the
              Status from "WiFi off" to another status. i.e "WiFi: on". */
             guard isNetworkCardEnabled || !isNetworkCardAvailable else { return }
@@ -66,7 +66,7 @@ class StatusMenuBase: NSMenu, NSMenuDelegate {
                     }
                 }
             case ITL80211_S_SCAN:
-                /** API does not report bgscan to HeliPort. During `ITL80211_S_RUN` the status
+                /** API does not report bgscan to AtherPort. During `ITL80211_S_RUN` the status
                  will never change to `ITL80211_S_SCAN` unless users manually disassociate.
                  Set the icon to disconnected here so it displays correctly when users manually disassociate. */
                 StatusBarIcon.shared().disconnected()
@@ -134,7 +134,7 @@ class StatusMenuBase: NSMenu, NSMenuDelegate {
 
     let bsdItem = HPMenuItem(title: .interfaceName)
     let macItem = HPMenuItem(title: .macAddress)
-    let itlwmVerItem = HPMenuItem(title: .itlwmVer)
+    let ath9kVerItem = HPMenuItem(title: .ath9kVer)
 
     let enableLoggingItem = HPMenuItem(title: .enableWiFiLog)
     let createReportItem = HPMenuItem(title: .createReport)
@@ -143,7 +143,7 @@ class StatusMenuBase: NSMenu, NSMenuDelegate {
 
     let networkItemListSeparator = NSMenuItem.separator()
 
-    let aboutItem = HPMenuItem(title: .aboutHeliport)
+    let aboutItem = HPMenuItem(title: .aboutAtherPort)
     let checkUpdateItem = {
          let item = HPMenuItem(title: .checkUpdates)
          item.target = UpdateManager.sharedController
@@ -151,7 +151,7 @@ class StatusMenuBase: NSMenu, NSMenuDelegate {
          return item
      }()
     let quitSeparator = NSMenuItem.separator()
-    let quitItem = HPMenuItem(title: .quitHeliport,
+    let quitItem = HPMenuItem(title: .quitAtherPort,
                               action: #selector(clickMenuItem(_:)), keyEquivalent: "q")
 
     let toggleLaunchItem = HPMenuItem(title: .launchLogin,
@@ -264,7 +264,7 @@ class StatusMenuBase: NSMenu, NSMenuDelegate {
         DispatchQueue.global(qos: .background).async {
             var bsdName: String = .unavailable
             var macAddr: String = .unavailable
-            var itlwmVer: String = .unavailable
+            var ath9kVer: String = .unavailable
             var platformInfo = platform_info_t()
 
             if is_power_on() {
@@ -276,14 +276,14 @@ class StatusMenuBase: NSMenu, NSMenuDelegate {
             if get_platform_info(&platformInfo) {
                 bsdName = String(cCharArray: platformInfo.device_info_str)
                 macAddr = NetworkManager.getMACAddressFromBSD(bsd: bsdName) ?? macAddr
-                itlwmVer = String(cCharArray: platformInfo.driver_info_str)
+                ath9kVer = String(cCharArray: platformInfo.driver_info_str)
             }
 
             DispatchQueue.main.async {
                 if let items = self as? StatusMenuItems {
                     items.setValueForItem(self.bsdItem, value: bsdName)
                     items.setValueForItem(self.macItem, value: macAddr)
-                    items.setValueForItem(self.itlwmVerItem, value: itlwmVer)
+                    items.setValueForItem(self.ath9kVerItem, value: ath9kVer)
                 }
             }
 
@@ -330,10 +330,10 @@ class StatusMenuBase: NSMenu, NSMenuDelegate {
         case .launchLogin:
             LoginItemManager.setStatus(enabled: !LoginItemManager.isEnabled())
             isAutoLaunch = LoginItemManager.isEnabled()
-        case .aboutHeliport:
+        case .aboutAtherPort:
             NSApplication.shared.orderFrontStandardAboutPanel()
             NSApplication.shared.activate(ignoringOtherApps: true)
-        case .quitHeliport:
+        case .quitAtherPort:
             NSApp.terminate(nil)
         default:
             Log.error("Invalid menu item clicked")
@@ -540,13 +540,13 @@ private extension String {
     static let unavailable = NSLocalizedString("Unavailable")
     static let interfaceName = NSLocalizedString("Interface Name: ")
     static let macAddress = NSLocalizedString("Address: ")
-    static let itlwmVer = NSLocalizedString("Version: ")
+    static let ath9kVer = NSLocalizedString("Version: ")
     static let enableWiFiLog = NSLocalizedString("Enable Wi-Fi Logging")
     static let createReport = NSLocalizedString("Create Diagnostics Report...")
     static let openDiagnostics = NSLocalizedString("Open Wireless Diagnostics...")
     static let checkUpdates = NSLocalizedString("Check for Updates...")
-    static let aboutHeliport = NSLocalizedString("About HeliPort")
-    static let quitHeliport = NSLocalizedString("Quit HeliPort")
+    static let aboutAtherPort = NSLocalizedString("About AtherPort")
+    static let quitAtherPort = NSLocalizedString("Quit AtherPort")
     static let launchLogin = NSLocalizedString("Launch At Login")
     static let ipAddr = NSLocalizedString("    IP Address: ")
     static let routerStr = NSLocalizedString("    Router: ")

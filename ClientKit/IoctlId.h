@@ -30,8 +30,12 @@ enum IOCTL_IDS {
     IOCTL_80211_SCAN_RESULT,
     IOCTL_80211_TX_POWER_LEVEL,
     IOCTL_80211_NW_BSSID,
+
+    kUserClientControlWake,
+    kUserClientControlSleep,
     
     IOCTL_ID_MAX
 };
+
 
 #endif /* IoctlId_h */

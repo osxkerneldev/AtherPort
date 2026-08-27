@@ -153,48 +153,35 @@ error:
     return false;
 }
 
-static bool isSupportService(const char *name)
-{
-    if (strcmp(name, "TestService") && strcmp(name, "ath9k")) {
-        return false;
-    }
-    return true;
-}
+#define ATH9K_SERVICE_CLASS "com_dellbookpro_ATH9K"
 
 bool open_adapter(io_connect_t *connection_t)
 {
     kern_return_t kr;
     io_iterator_t iter;
-    bool found = false;
     io_service_t service;
-    mach_port_name_t port;
+    bool found = false;
     uint32_t type = 0;
-    char nn[20];
-    if (IOMasterPort(0, &port)) {
+
+    CFMutableDictionaryRef matchingDict = IOServiceMatching(ATH9K_SERVICE_CLASS);
+    if (!matchingDict) {
         return false;
     }
-    CFMutableDictionaryRef matchingDict = IOServiceMatching("IOEthernetController");
-    kr = IOServiceGetMatchingServices(port, matchingDict, &iter);
-    mach_port_deallocate(mach_task_self(), port);
-    if (kr != KERN_SUCCESS)
+
+    /*
+     * MACH_PORT_NULL is what kIOMasterPortDefault/kIOMainPortDefault expand to;
+     * spelling it this way keeps the 10.13 target free of the 12.0 deprecation.
+     * Consumes a reference on matchingDict, even on failure.
+     */
+    kr = IOServiceGetMatchingServices(MACH_PORT_NULL, matchingDict, &iter);
+    if (kr != KERN_SUCCESS) {
         return false;
-    while ((service = IOIteratorNext(iter)) && !found) {
-        CFTypeRef type_ref = IORegistryEntryCreateCFProperty(service, CFSTR("IOClass"), kCFAllocatorDefault, 0);
-        if (type_ref) {
-            const char *name = CFStringGetCStringPtr(type_ref, 0);
-            if (!name) {
-                name = nn;
-                CFStringGetCString(type_ref, nn, 20, 0);
-            }
-            if (isSupportService(name)) {
-                if (IOServiceOpen(service, mach_task_self(), type, connection_t) == KERN_SUCCESS) {
-                    found = true;
-                }
-            }
-            // Fix leak issue if there is more than one Ethernet controller
-            CFRelease(type_ref);
+    }
+
+    while (!found && (service = IOIteratorNext(iter))) {
+        if (IOServiceOpen(service, mach_task_self(), type, connection_t) == KERN_SUCCESS) {
+            found = true;
         }
-        // Fix leak issue if there is more than one Ethernet controller
         IOObjectRelease(service);
     }
     IOObjectRelease(iter);
